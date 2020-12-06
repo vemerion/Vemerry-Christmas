@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "vemerry-christmas:block/christmas_stocking_block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "vemerry-christmas:block/christmas_stocking_block"
+    },
+    "facing=south": {
+      "model": "vemerry-christmas:block/christmas_stocking_block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "vemerry-christmas:block/christmas_stocking_block",
+      "y": 270
+    }
+  }
+}  
