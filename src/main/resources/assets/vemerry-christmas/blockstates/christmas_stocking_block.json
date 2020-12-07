@@ -1,18 +1,33 @@
 {
   "variants": {
-    "facing=east": {
+    "facing=east,full=false": {
       "model": "vemerry-christmas:block/christmas_stocking_block",
       "y": 90
     },
-    "facing=north": {
+    "facing=north,full=false": {
       "model": "vemerry-christmas:block/christmas_stocking_block"
     },
-    "facing=south": {
+    "facing=south,full=false": {
       "model": "vemerry-christmas:block/christmas_stocking_block",
       "y": 180
     },
-    "facing=west": {
+    "facing=west,full=false": {
       "model": "vemerry-christmas:block/christmas_stocking_block",
+      "y": 270
+    },
+    "facing=east,full=true": {
+      "model": "vemerry-christmas:block/christmas_stocking_block_full",
+      "y": 90
+    },
+    "facing=north,full=true": {
+      "model": "vemerry-christmas:block/christmas_stocking_block_full"
+    },
+    "facing=south,full=true": {
+      "model": "vemerry-christmas:block/christmas_stocking_block_full",
+      "y": 180
+    },
+    "facing=west,full=true": {
+      "model": "vemerry-christmas:block/christmas_stocking_block_full",
       "y": 270
     }
   }
