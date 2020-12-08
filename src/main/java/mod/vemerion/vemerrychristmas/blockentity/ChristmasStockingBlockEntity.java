@@ -25,7 +25,8 @@ public class ChristmasStockingBlockEntity extends BlockEntity {
 				if (!playerStack.isEmpty()) {
 					player.setStackInHand(hand, ItemStack.EMPTY);
 					inventory = playerStack.copy();
-					world.setBlockState(getPos(), getCachedState().with(ChristmasStockingBlock.FULL, true), 3);
+					if (world.getBlockState(getPos()).contains(ChristmasStockingBlock.FULL))
+						world.setBlockState(getPos(), getCachedState().with(ChristmasStockingBlock.FULL, true), 3);
 				}
 			} else {
 				drop();
@@ -37,7 +38,8 @@ public class ChristmasStockingBlockEntity extends BlockEntity {
 		if (!world.isClient) {
 			ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), inventory);
 			inventory = ItemStack.EMPTY;
-			world.setBlockState(getPos(), getCachedState().with(ChristmasStockingBlock.FULL, false), 3);
+			if (world.getBlockState(getPos()).contains(ChristmasStockingBlock.FULL))
+				world.setBlockState(getPos(), getCachedState().with(ChristmasStockingBlock.FULL, false), 3);
 		}
 	}
 

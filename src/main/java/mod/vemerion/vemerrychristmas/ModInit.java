@@ -2,11 +2,16 @@ package mod.vemerion.vemerrychristmas;
 
 import mod.vemerion.vemerrychristmas.block.ChristmasStockingBlock;
 import mod.vemerion.vemerrychristmas.blockentity.ChristmasStockingBlockEntity;
+import mod.vemerion.vemerrychristmas.entity.ChristmasTreeEntity;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -30,6 +35,12 @@ public class ModInit implements ModInitializer {
 			.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_stocking_block_entity"),
 					BlockEntityType.Builder.create(ChristmasStockingBlockEntity::new, CHRISTMAS_STOCKING_BLOCK)
 							.build(null));
+	
+    public static final EntityType<ChristmasTreeEntity> CHRISTMAS_TREE_ENTITY = Registry.register(
+            Registry.ENTITY_TYPE,
+            new Identifier(MODID, "christmas_tree_entity"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, ChristmasTreeEntity::new).dimensions(EntityDimensions.fixed(1.2f, 2.65f)).build());
+
 
 	@Override
 	public void onInitialize() {

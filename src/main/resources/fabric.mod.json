@@ -19,8 +19,14 @@
   "entrypoints": {
     "main": [
       "mod.vemerion.vemerrychristmas.ModInit"
+    ],
+    "client": [
+      "mod.vemerion.vemerrychristmas.ClientModInit"
     ]
   },
+  "mixins": [
+    "vemerry-christmas.mixins.json"
+  ],
 
   "depends": {
     "fabricloader": ">=0.7.4",
