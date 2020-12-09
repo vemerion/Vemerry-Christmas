@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "lll",
+    "lll",
+    " r "
+  ],
+  "key": {
+    "l": {
+      "tag": "minecraft:leaves"
+    },
+    "r": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "result": {
+    "item": "vemerry-christmas:christmas_tree_item"
+  }
+}
