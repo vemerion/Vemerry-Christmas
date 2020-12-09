@@ -2,6 +2,8 @@ package mod.vemerion.vemerrychristmas.entity;
 
 import mod.vemerion.vemerrychristmas.ModInit;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -52,6 +54,9 @@ public class ChristmasTreeEntity extends Entity {
 
 			Block.dropStack(this.world, this.getBlockPos(), new ItemStack(ModInit.CHRISTMAS_TREE_ITEM));
 			remove();
+			BlockState state = world.getBlockState(getBlockPos());
+			if (state.getBlock() == ModInit.CHRISTMAS_TREE_LIGHT_BLOCK)
+				world.setBlockState(getBlockPos(), Blocks.AIR.getDefaultState());
 			return true;
 		}
 	}
@@ -74,6 +79,13 @@ public class ChristmasTreeEntity extends Entity {
 
 	@Override
 	public ActionResult interact(PlayerEntity player, Hand hand) {
+		if (!world.isClient) {
+			BlockState state = world.getBlockState(getBlockPos());
+			if (state.getBlock() == ModInit.CHRISTMAS_TREE_LIGHT_BLOCK)
+				world.setBlockState(getBlockPos(), Blocks.AIR.getDefaultState());
+			else
+				world.setBlockState(getBlockPos(), ModInit.CHRISTMAS_TREE_LIGHT_BLOCK.getDefaultState());
+		}
 		return ActionResult.CONSUME;
 	}
 

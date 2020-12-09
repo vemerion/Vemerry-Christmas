@@ -7,6 +7,7 @@ import mod.vemerion.vemerrychristmas.item.ChristmasTreeItem;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
@@ -27,6 +28,12 @@ public class ModInit implements ModInitializer {
 	public static final Block CHRISTMAS_STOCKING_BLOCK = Registry.register(Registry.BLOCK,
 			new Identifier(MODID, "christmas_stocking_block"), new ChristmasStockingBlock(FabricBlockSettings
 					.of(Material.SUPPORTED).noCollision().breakInstantly().sounds(BlockSoundGroup.WOOL)));
+
+	public static final Block CHRISTMAS_TREE_LIGHT_BLOCK = Registry.register(Registry.BLOCK,
+			new Identifier(MODID, "christmas_tree_light_block"), new Block(
+					AbstractBlock.Settings.of(Material.SUPPORTED).noCollision().breakInstantly().luminance((state) -> {
+						return 14;
+					})));
 
 	public static final Item CHRISTMAS_STOCKING_ITEM = Registry.register(Registry.ITEM,
 			new Identifier(MODID, "christmas_stocking_item"),
