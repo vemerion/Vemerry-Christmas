@@ -44,7 +44,7 @@ public class ModInit implements ModInitializer {
 	public static final EntityType<ChristmasTreeEntity> CHRISTMAS_TREE_ENTITY = Registry.register(Registry.ENTITY_TYPE,
 			new Identifier(MODID, "christmas_tree_entity"),
 			FabricEntityTypeBuilder.create(SpawnGroup.MISC, ChristmasTreeEntity::new)
-					.dimensions(EntityDimensions.fixed(1.2f, 2.65f)).build());
+					.dimensions(EntityDimensions.fixed(1.2f, 2.85f)).build());
 
 	@Override
 	public void onInitialize() {
