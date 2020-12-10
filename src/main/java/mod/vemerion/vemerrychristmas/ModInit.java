@@ -43,6 +43,9 @@ public class ModInit implements ModInitializer {
 			new Identifier(MODID, "christmas_tree_item"),
 			new ChristmasTreeItem(new Item.Settings().group(ItemGroup.SEARCH)));
 
+	public static final Item CHRISTMAS_PRESENT_ITEM = Registry.register(Registry.ITEM, new Identifier(MODID, "christmas_present_item"),
+			new Item(new Item.Settings().group(ItemGroup.SEARCH)));
+
 	public static final BlockEntityType<ChristmasStockingBlockEntity> CHRISTMAS_STOCKING_BLOCK_ENTITY = Registry
 			.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_stocking_block_entity"),
 					BlockEntityType.Builder.create(ChristmasStockingBlockEntity::new, CHRISTMAS_STOCKING_BLOCK)

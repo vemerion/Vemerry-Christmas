@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "pgp",
+    "ggg",
+    "pgp"
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:paper"
+    },
+    "g": {
+      "item": "minecraft:green_dye"
+    }
+  },
+  "result": {
+    "item": "vemerry-christmas:christmas_present_item"
+  }
+}
