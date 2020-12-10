@@ -5,6 +5,7 @@ import mod.vemerion.vemerrychristmas.blockentity.ChristmasStockingBlockEntity;
 import mod.vemerion.vemerrychristmas.entity.ChristmasTreeEntity;
 import mod.vemerion.vemerrychristmas.item.ChristmasTreeItem;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.block.AbstractBlock;
@@ -17,6 +18,7 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -43,8 +45,8 @@ public class ModInit implements ModInitializer {
 			new Identifier(MODID, "christmas_tree_item"),
 			new ChristmasTreeItem(new Item.Settings().group(ItemGroup.SEARCH)));
 
-	public static final Item CHRISTMAS_PRESENT_ITEM = Registry.register(Registry.ITEM, new Identifier(MODID, "christmas_present_item"),
-			new Item(new Item.Settings().group(ItemGroup.SEARCH)));
+	public static final Item CHRISTMAS_PRESENT_ITEM = Registry.register(Registry.ITEM,
+			new Identifier(MODID, "christmas_present_item"), new Item(new Item.Settings().group(ItemGroup.SEARCH)));
 
 	public static final BlockEntityType<ChristmasStockingBlockEntity> CHRISTMAS_STOCKING_BLOCK_ENTITY = Registry
 			.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_stocking_block_entity"),
@@ -55,6 +57,14 @@ public class ModInit implements ModInitializer {
 			new Identifier(MODID, "christmas_tree_entity"),
 			FabricEntityTypeBuilder.create(SpawnGroup.MISC, ChristmasTreeEntity::new)
 					.dimensions(EntityDimensions.fixed(1.2f, 2.85f)).build());
+
+	public static final ItemGroup VEMERRY_GROUP = FabricItemGroupBuilder.create(new Identifier(MODID, "vemerry_group"))
+			.icon(() -> new ItemStack(CHRISTMAS_TREE_ITEM)).appendItems(stacks -> {
+				for (Identifier id : Registry.ITEM.getIds()) {
+					if (id.getNamespace().equals(MODID))
+						stacks.add(new ItemStack(Registry.ITEM.get(id)));
+				}
+			}).build();
 
 	@Override
 	public void onInitialize() {
