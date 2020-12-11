@@ -1,0 +1,11 @@
+{
+  "variants": {
+    "full=false": {
+      "model": "vemerry-christmas:block/christmas_present_block"
+    },
+    "full=true": {
+      "model": "vemerry-christmas:block/christmas_present_block_full"
+    }
+  }
+}                    
+

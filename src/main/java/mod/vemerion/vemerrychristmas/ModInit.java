@@ -1,6 +1,8 @@
 package mod.vemerion.vemerrychristmas;
 
+import mod.vemerion.vemerrychristmas.block.ChristmasPresentBlock;
 import mod.vemerion.vemerrychristmas.block.ChristmasStockingBlock;
+import mod.vemerion.vemerrychristmas.blockentity.ChristmasPresentBlockEntity;
 import mod.vemerion.vemerrychristmas.blockentity.ChristmasStockingBlockEntity;
 import mod.vemerion.vemerrychristmas.entity.ChristmasTreeEntity;
 import mod.vemerion.vemerrychristmas.item.ChristmasTreeItem;
@@ -32,10 +34,14 @@ public class ModInit implements ModInitializer {
 					.of(Material.SUPPORTED).noCollision().breakInstantly().sounds(BlockSoundGroup.WOOL)));
 
 	public static final Block CHRISTMAS_TREE_LIGHT_BLOCK = Registry.register(Registry.BLOCK,
-			new Identifier(MODID, "christmas_tree_light_block"), new Block(
-					AbstractBlock.Settings.of(Material.SUPPORTED).noCollision().breakInstantly().luminance((state) -> {
-						return 14;
-					})));
+			new Identifier(MODID, "christmas_tree_light_block"),
+			new Block(AbstractBlock.Settings.of(Material.AIR).noCollision().breakInstantly().luminance((state) -> {
+				return 14;
+			})));
+
+	public static final Block CHRISTMAS_PRESENT_BLOCK = Registry.register(Registry.BLOCK,
+			new Identifier(MODID, "christmas_present_block"),
+			new ChristmasPresentBlock(AbstractBlock.Settings.of(Material.WOOL).strength(0.8f).sounds(BlockSoundGroup.WOOL)));
 
 	public static final Item CHRISTMAS_STOCKING_ITEM = Registry.register(Registry.ITEM,
 			new Identifier(MODID, "christmas_stocking_item"),
@@ -46,12 +52,19 @@ public class ModInit implements ModInitializer {
 			new ChristmasTreeItem(new Item.Settings().group(ItemGroup.SEARCH)));
 
 	public static final Item CHRISTMAS_PRESENT_ITEM = Registry.register(Registry.ITEM,
-			new Identifier(MODID, "christmas_present_item"), new Item(new Item.Settings().group(ItemGroup.SEARCH)));
+			new Identifier(MODID, "christmas_present_item"),
+			new BlockItem(CHRISTMAS_PRESENT_BLOCK, new Item.Settings().group(ItemGroup.SEARCH)));
 
 	public static final BlockEntityType<ChristmasStockingBlockEntity> CHRISTMAS_STOCKING_BLOCK_ENTITY = Registry
 			.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_stocking_block_entity"),
 					BlockEntityType.Builder.create(ChristmasStockingBlockEntity::new, CHRISTMAS_STOCKING_BLOCK)
 							.build(null));
+	
+	public static final BlockEntityType<ChristmasPresentBlockEntity> CHRISTMAS_PRESENT_BLOCK_ENTITY = Registry
+			.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_present_block_entity"),
+					BlockEntityType.Builder.create(ChristmasPresentBlockEntity::new, CHRISTMAS_PRESENT_BLOCK)
+							.build(null));
+
 
 	public static final EntityType<ChristmasTreeEntity> CHRISTMAS_TREE_ENTITY = Registry.register(Registry.ENTITY_TYPE,
 			new Identifier(MODID, "christmas_tree_entity"),

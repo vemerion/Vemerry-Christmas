@@ -1,0 +1,20 @@
+{   "parent": "block/block",
+    "textures": {
+        "present": "vemerry-christmas:blocks/present",
+        "up": "vemerry-christmas:blocks/present_empty_top",
+        "particle": "vemerry-christmas:blocks/present"
+    },
+    "elements": [
+        {   "from": [ 4, 0, 4 ],
+            "to": [ 12, 8, 12 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#present" },
+                "up":  { "uv": [ 0, 0, 16, 16 ], "texture": "#up" },
+                "north":  { "uv": [ 0, 0, 16, 16 ], "texture": "#present" },
+                "south":  { "uv": [ 0, 0, 16, 16 ], "texture": "#present" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#present" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#present" }
+            }
+        }
+    ]
+}  
