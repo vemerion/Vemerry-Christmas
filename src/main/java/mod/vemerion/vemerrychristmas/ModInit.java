@@ -6,6 +6,7 @@ import mod.vemerion.vemerrychristmas.blockentity.ChristmasPresentBlockEntity;
 import mod.vemerion.vemerrychristmas.blockentity.ChristmasStockingBlockEntity;
 import mod.vemerion.vemerrychristmas.entity.ChristmasTreeEntity;
 import mod.vemerion.vemerrychristmas.item.ChristmasTreeItem;
+import mod.vemerion.vemerrychristmas.item.SantaHatMaterial;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
@@ -16,7 +17,10 @@ import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.SpawnGroup;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -40,8 +44,8 @@ public class ModInit implements ModInitializer {
 			})));
 
 	public static final Block CHRISTMAS_PRESENT_BLOCK = Registry.register(Registry.BLOCK,
-			new Identifier(MODID, "christmas_present_block"),
-			new ChristmasPresentBlock(AbstractBlock.Settings.of(Material.WOOL).strength(0.8f).sounds(BlockSoundGroup.WOOL)));
+			new Identifier(MODID, "christmas_present_block"), new ChristmasPresentBlock(
+					AbstractBlock.Settings.of(Material.WOOL).strength(0.8f).sounds(BlockSoundGroup.WOOL)));
 
 	public static final Item CHRISTMAS_STOCKING_ITEM = Registry.register(Registry.ITEM,
 			new Identifier(MODID, "christmas_stocking_item"),
@@ -55,16 +59,19 @@ public class ModInit implements ModInitializer {
 			new Identifier(MODID, "christmas_present_item"),
 			new BlockItem(CHRISTMAS_PRESENT_BLOCK, new Item.Settings().group(ItemGroup.SEARCH)));
 
+	private static final ArmorMaterial SANTA_HAT_MATERIAL = new SantaHatMaterial();
+
+	public static final Item SANTA_HAT_ITEM = Registry.register(Registry.ITEM, new Identifier(MODID, "santa_hat_item"),
+			new ArmorItem(SANTA_HAT_MATERIAL, EquipmentSlot.HEAD, new Item.Settings().group(ItemGroup.SEARCH)));
+
 	public static final BlockEntityType<ChristmasStockingBlockEntity> CHRISTMAS_STOCKING_BLOCK_ENTITY = Registry
 			.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_stocking_block_entity"),
 					BlockEntityType.Builder.create(ChristmasStockingBlockEntity::new, CHRISTMAS_STOCKING_BLOCK)
 							.build(null));
-	
-	public static final BlockEntityType<ChristmasPresentBlockEntity> CHRISTMAS_PRESENT_BLOCK_ENTITY = Registry
-			.register(Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_present_block_entity"),
-					BlockEntityType.Builder.create(ChristmasPresentBlockEntity::new, CHRISTMAS_PRESENT_BLOCK)
-							.build(null));
 
+	public static final BlockEntityType<ChristmasPresentBlockEntity> CHRISTMAS_PRESENT_BLOCK_ENTITY = Registry.register(
+			Registry.BLOCK_ENTITY_TYPE, new Identifier(MODID, "christmas_present_block_entity"),
+			BlockEntityType.Builder.create(ChristmasPresentBlockEntity::new, CHRISTMAS_PRESENT_BLOCK).build(null));
 
 	public static final EntityType<ChristmasTreeEntity> CHRISTMAS_TREE_ENTITY = Registry.register(Registry.ENTITY_TYPE,
 			new Identifier(MODID, "christmas_tree_entity"),

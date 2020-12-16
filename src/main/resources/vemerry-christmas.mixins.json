@@ -6,7 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "ClientPlayNetworkHandlerMixin"
+    "ClientPlayNetworkHandlerMixin",
+    "ArmorFeatureRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
